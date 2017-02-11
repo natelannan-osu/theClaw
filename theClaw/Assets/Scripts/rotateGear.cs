@@ -11,11 +11,11 @@ public class rotateGear : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.LeftArrow))  //when moving left rotate gear sprite left
+		if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") < 0)  //when moving left rotate gear sprite left
 		{
 			transform.Rotate (new Vector3 (0, 0, 90) * Time.deltaTime);		
 		}
-		if (Input.GetKey(KeyCode.RightArrow))  //when moving right rotate gear sprite right
+		if (Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("Horizontal") > 0)  //when moving right rotate gear sprite right
 		{
 			transform.Rotate (new Vector3 (0, 0, -90) * Time.deltaTime);		
 		}

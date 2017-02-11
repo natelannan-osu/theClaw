@@ -69,7 +69,7 @@ public class dropRock : MonoBehaviour {
 				}
 				rendered = true;  //rendered
 			}
-			if (Input.GetKeyDown (KeyCode.Space)) {  //open claw and drop rock
+			if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxis("rock") == 1) {  //open claw and drop rock
 				rigidBody.gravityScale = 1f;  //give it gravity
 				hasDropped = true;  //dropped, need to reload
 				reload = true; //claw needs to be reloaded
@@ -78,7 +78,7 @@ public class dropRock : MonoBehaviour {
 		} else {
 			timeUntilDrop -= Time.deltaTime;  //rock released start timer for spawning new rock
 		}
-		if (Input.GetKeyUp (KeyCode.Space)) { 
+		if (Input.GetKeyUp (KeyCode.Space) || Input.GetAxis("rock") == 0) { 
 			closed=true;  //claw closed to be used with late update			
 		}
 	}

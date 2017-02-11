@@ -12,6 +12,7 @@ public class makeFrown : MonoBehaviour {
 	private float timeUntilSmile;  //wait until smile
 	private SpriteRenderer spriteRenderer;  //for switching mouth states
 	private AudioSource yelp;  //person sound when hit
+	private float rockYpos;
 	// Use this for initialization
 	void Start () {
 		timeUntilSmile = holdFrownTime;  //set to holdFrownTime
@@ -34,9 +35,12 @@ public class makeFrown : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D other) {  //collision
 		if (other.gameObject.tag == "rock" && !frowning) {  //rock hit person
-			spriteRenderer.sprite = frown;  //cause frown
-			yelp.Play ();  //play yelp sound
-			frowning = true;  //set flag
+			rockYpos = other.gameObject.transform.position.y;
+			if ( rockYpos > -3.2f ) {
+				spriteRenderer.sprite = frown;  //cause frown
+				yelp.Play ();  //play yelp sound
+				frowning = true;  //set flag
+			}
 		}
 	}
 }

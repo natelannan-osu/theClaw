@@ -26,7 +26,7 @@ public class openClaw2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Space))  //open claw when space bar pressed
+		if (Input.GetKey(KeyCode.Space) || Input.GetAxis("rock") == 1)  //open claw when space bar pressed
 		{
 			spriteRenderer.sprite = openClaw;  //open claw
 			if (!openClawSound.isPlaying && !wasOpen) {  //if not playing squeak and transitioning from closed claw to open claw
