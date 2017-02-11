@@ -1,20 +1,21 @@
 Sprites:
 
-designer		website										License				Date Aquired
-========		========================================================			=======================		====================
-- floatvoid               http://opengameart.org/content/desert-rock          				Public Domain			1/27/17
-- para			http://opengameart.org/content/chain-gang					Public Domain			1/27/17
-- unidentified		http://clipart-finder.com/clipart/Gear231.html					Public Domain			1/27/17
-- Tiziana			http://opengameart.org/sites/default/files/02tizetapav3.png  		LGPL CC		 		1/27/17
-- Sprite Land		http://www.spriteland.com/sprites/Ancient-city-in-the-desert-background.html  	Public Domain			1/27/17
+designer		website												License				Date Aquired
+========		========================================================					=======================		====================
+- floatvoid             http://opengameart.org/content/desert-rock          						Public Domain			1/27/17
+- para			http://opengameart.org/content/chain-gang							Public Domain			1/27/17
+- unidentified		http://clipart-finder.com/clipart/Gear231.html							Public Domain			1/27/17
+- Tiziana		http://opengameart.org/sites/default/files/02tizetapav3.png 	 				LGPL CC		 		1/27/17
+- Sprite Land		http://www.spriteland.com/sprites/Ancient-city-in-the-desert-background.html  			Public Domain			1/27/17
+- Shadowgate31		http://shadowgate31.deviantart.com/art/Human-Trolls-EDIT2-Skin-Hair-206313652			Public Domain			1/31/17
+- classroom clipart	http://classroomclipart.com/clipart-view/Clipart/Geography/sand_dunes_in_desert_2_jpg.htm	Personal Use			1/31/17
 
-		
 Audio:
 
-Composer/Designer	website										License
-=================	========================================================			=======================
-- Ozzed			http://ozzed.net/music/8-bit-empire.shtml#tune09  				CC				1/30/17
-- Sound Ideas Series	https://www.sound-ideas.com/Collection/14/1/Sound-Effects			Royalty Free - End User		5/1/03
+Composer/Designer	website												License				Date Aquired
+=================	========================================================					=======================		====================
+- Ozzed			http://ozzed.net/music/8-bit-empire.shtml#tune09  						CC				1/30/17
+- Sound Ideas Series	https://www.sound-ideas.com/Collection/14/1/Sound-Effects					Royalty Free - End User		5/1/03
 General Sound Effects 
 Library	Sound Ideas 									 
 (these sfx must not be reused as they are part of an end user agreement from purchase)

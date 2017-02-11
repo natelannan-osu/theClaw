@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class rotateGear : MonoBehaviour {
-
+	/*** This Script causes gear sprite to rotate right or left depending which arrow key is held ***/
 	// Use this for initialization
 	void Start () {
 		

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class openClaw2 : MonoBehaviour {
+	/*** This Script opens claw by swapping two sprites on pressing space key as well as adding sound effects for the claw ***/
 	public Sprite openClaw;  //opened claw sprite
 	public Sprite closedClaw;  //closed claw sprite
 
