@@ -13,10 +13,13 @@ public class dropRock : MonoBehaviour {
 	public Sprite rockSprite1;  //rock sprites
 	public Sprite rockSprite2;
 	public Sprite rockSprite3;
+	public bool hasDropped;  //state of current rock
+	public bool initialContact;  //first hit happend.  use to ignore later hits for scoring
+
 	private float waitForRock = .5f;  //time to wait before spawning new rock
 	private Rigidbody2D rigidBody;  //rock rigid body
 	private Vector3 offset;  //offset of rock original position to claw original position 
-	public bool hasDropped;  //state of current rock
+
 	private bool reload;  //need to reload claw
 	private bool rendered;	//test to see if rock sprite needs to be loaded
 	private bool closed;  //flag for claw state to be used in late update
@@ -35,6 +38,7 @@ public class dropRock : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		hasDropped = false;  //start inside claw
+		initialContact = false;  //hasn't hit anything
 		reload = false;  //start loaded with a rock
 		rendered = false;  //not rendered yet
 		timeUntilDrop = waitForRock;  //set timer
@@ -93,6 +97,7 @@ public class dropRock : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {  //rock hit something
+		initialContact = true;
 		if (other.gameObject.tag == "rock") {  //another rock
 			rockVelocity = rigidBody.velocity;  //make a sound proportional to magnitude of velocity vector
 			if (rockVelocity.magnitude > 4 ) {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class moveArm : MonoBehaviour {
 	/*** This Script is to cause claw arm to move left and right on screen, stopping at screen edges ***/
 	private AudioSource audioSource;  //chain sound moving arm
-	private float speed = .1f;
+	private float speed = .2f;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,7 @@ public class moveArm : MonoBehaviour {
 			}
 			if (transform.localPosition.x >= -3.8f) {  //move left until edge
 				if (Input.GetKey (KeyCode.LeftArrow)) {
-					transform.Translate (-.1f, 0f, 0f);  //move left
+					transform.Translate (-speed, 0f, 0f);  //move left
 				} else {
 					deltaX = Input.GetAxis("Horizontal");
 					transform.position = transform.position + new Vector3 (deltaX * speed, 0, 0);
@@ -38,7 +38,7 @@ public class moveArm : MonoBehaviour {
 			if (transform.localPosition.x <= 9.5f)  //move right until edge
 			{
 				if (Input.GetKey (KeyCode.LeftArrow)) {
-					transform.Translate (.1f, 0f, 0f); //move right
+					transform.Translate (speed, 0f, 0f); //move right
 				} else {
 					deltaX = Input.GetAxis("Horizontal");
 					transform.position = transform.position + new Vector3 (deltaX * speed, 0, 0);

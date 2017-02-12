@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class makeFrown : MonoBehaviour {
 	/*** This Script is to cause cartoon people to frown and yelp when hit by rock ***/
 	public Sprite smile;  //default facial expression
 	public Sprite frown;  //frown when hit by rock  
 	public bool frowning;  //used by tail child in cat person
+	public Text Score;
 
 	private float holdFrownTime = 1f;  //how long to hold frown
 	private float timeUntilSmile;  //wait until smile
 	private SpriteRenderer spriteRenderer;  //for switching mouth states
 	private AudioSource yelp;  //person sound when hit
 	private float rockYpos;
+	private static int hitCount;
+	//private GameObject rockObject;
 	// Use this for initialization
 	void Start () {
 		timeUntilSmile = holdFrownTime;  //set to holdFrownTime
@@ -20,6 +24,8 @@ public class makeFrown : MonoBehaviour {
 		if (spriteRenderer.sprite == null)  //default sprite is smile
 			spriteRenderer.sprite = smile;
 		yelp = GetComponent<AudioSource> ();  //specify yelp sound
+		hitCount = 0;
+		UpdateScore ();
 	}
 	
 	// Update is called once per frame
@@ -34,13 +40,24 @@ public class makeFrown : MonoBehaviour {
 		
 	}
 	void OnCollisionEnter2D(Collision2D other) {  //collision
-		if (other.gameObject.tag == "rock" && !frowning) {  //rock hit person
+		if (other.gameObject.tag == "rock") {  //rock hit person
 			rockYpos = other.gameObject.transform.position.y;
-			if ( rockYpos > -3.2f ) {
-				spriteRenderer.sprite = frown;  //cause frown
-				yelp.Play ();  //play yelp sound
-				frowning = true;  //set flag
+			if(!other.gameObject.GetComponent<dropRock> ().initialContact){
+				if (rockYpos > -3.2f) {
+					hitCount++;
+					UpdateScore ();
+					//Physics2D.IgnoreCollision (other.gameObject.GetComponent<Collider2D> (), GetComponent<Collider2D> ()); 
+					if (!frowning) {
+						spriteRenderer.sprite = frown;  //cause frown
+						yelp.Play ();  //play yelp sound
+						frowning = true;  //set flag
+					}
+				}
 			}
 		}
+	}
+
+	void UpdateScore (){
+		Score.text = "Score: " + hitCount.ToString ();
 	}
 }
