@@ -65,15 +65,20 @@ public class dropRock : MonoBehaviour {
 				if (rngRock <= 2.0f) {  //generate a rock sprite randomly
 					if (rngRock <= 1.0f) {
 						spriteRenderer.sprite = rockSprite1;
+						spriteRenderer.color = new Color (1f, 1f, 1f, 0f);
 					} else {
 						spriteRenderer.sprite = rockSprite2;
+						spriteRenderer.color = new Color (1f, 1f, 1f, 0f);
 					}
 				} else {
 					spriteRenderer.sprite = rockSprite3;
+					spriteRenderer.color = new Color (1f, 1f, 1f, 0f);
 				}
 				rendered = true;  //rendered
 			}
 			if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxis("rock") == 1) {  //open claw and drop rock
+				spriteRenderer.color = new Color (1f, 1f, 1f, 1f);
+				//transform.parent = null;
 				rigidBody.gravityScale = 1f;  //give it gravity
 				hasDropped = true;  //dropped, need to reload
 				reload = true; //claw needs to be reloaded
@@ -83,7 +88,7 @@ public class dropRock : MonoBehaviour {
 			timeUntilDrop -= Time.deltaTime;  //rock released start timer for spawning new rock
 		}
 		if (Input.GetKeyUp (KeyCode.Space) || Input.GetAxis("rock") == 0) { 
-			closed=true;  //claw closed to be used with late update			
+			closed=true;  //claw closed to be used with late update		
 		}
 	}
 
