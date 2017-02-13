@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class dropRock : MonoBehaviour {
 	/*** This script controls the behavior of a rock object.  It causes it to follow the claw
@@ -13,7 +14,9 @@ public class dropRock : MonoBehaviour {
 	public Sprite rockSprite1;  //rock sprites
 	public Sprite rockSprite2;
 	public Sprite rockSprite3;
+	[HideInInspector]
 	public bool hasDropped;  //state of current rock
+	[HideInInspector]
 	public bool initialContact;  //first hit happend.  use to ignore later hits for scoring
 
 	private float waitForRock = .5f;  //time to wait before spawning new rock
@@ -27,11 +30,10 @@ public class dropRock : MonoBehaviour {
 	private float audioVolume;  //volume for rock collision sound
 	private float rngRock;  //randomly generate rock sprites
 	private float timeUntilDrop;  //timer for how long to wait before spawning the next rock
-
-
-
 	private AudioSource audioSource;  //get rock collision sound
 	private SpriteRenderer spriteRenderer;  //sprite renderer to generate rock sprites
+	//private openClaw2 clawScript;
+
 
 
 
@@ -51,6 +53,7 @@ public class dropRock : MonoBehaviour {
 			spriteRenderer.sprite = rockSprite1;
 		}
 		closed = true;  //claw starts closed
+		//clawScript = claw.GetComponent<openClaw2>();
 	}
 
 	void FixedUpdate(){  //physics being used for rocks  fixed update so rocks don't get jostled before drop
@@ -76,7 +79,7 @@ public class dropRock : MonoBehaviour {
 				}
 				rendered = true;  //rendered
 			}
-			if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxis("rock") == 1) {  //open claw and drop rock
+			if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxis(openClaw2.Startup.inputAxis) == openClaw2.Startup.triggerDown) {  //open claw and drop rock
 				spriteRenderer.color = new Color (1f, 1f, 1f, 1f);
 				//transform.parent = null;
 				rigidBody.gravityScale = 1f;  //give it gravity
@@ -87,7 +90,7 @@ public class dropRock : MonoBehaviour {
 		} else {
 			timeUntilDrop -= Time.deltaTime;  //rock released start timer for spawning new rock
 		}
-		if (Input.GetKeyUp (KeyCode.Space) || Input.GetAxis("rock") == 0) { 
+		if (Input.GetKeyUp (KeyCode.Space) || Input.GetAxis(openClaw2.Startup.inputAxis) == openClaw2.Startup.triggerUp) { 
 			closed=true;  //claw closed to be used with late update		
 		}
 	}

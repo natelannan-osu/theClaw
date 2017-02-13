@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class openClaw2 : MonoBehaviour {
 	/*** This Script opens claw by swapping two sprites on pressing space key as well as adding sound effects for the claw ***/
@@ -11,6 +12,34 @@ public class openClaw2 : MonoBehaviour {
 	private AudioSource openClawSound;  //squeak of opening claw
 	private AudioSource closeClawSound;  //slam of closing claw
 	private bool wasOpen = false;  //check last claw state
+
+	[InitializeOnLoad]
+	public class Startup
+	{
+		public static string opSys = "Unknown";
+		public static int triggerDown;
+		public static int triggerUp;
+		public static string inputAxis;
+		static Startup() {
+			if (Application.platform == RuntimePlatform.WindowsEditor 
+				|| Application.platform == RuntimePlatform.WindowsPlayer
+				|| Application.platform == RuntimePlatform.WindowsWebPlayer) {
+				opSys = "Win";
+				triggerDown = 1;
+				triggerUp = 0;
+				inputAxis = "rock_win";
+			}
+			else if (Application.platform == RuntimePlatform.OSXEditor
+				|| Application.platform == RuntimePlatform.OSXPlayer
+				|| Application.platform == RuntimePlatform.OSXWebPlayer
+				|| Application.platform == RuntimePlatform.OSXDashboardPlayer){
+				opSys = "OSX";
+				triggerDown = 1;
+				triggerUp = -1;
+				inputAxis = "rock_mac";
+			}
+		}
+	}
 
 
 	// Use this for initialization
@@ -26,7 +55,7 @@ public class openClaw2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Space) || Input.GetAxis("rock") == 1)  //open claw when space bar pressed
+		if (Input.GetKey(KeyCode.Space) || Input.GetAxis(Startup.inputAxis) == Startup.triggerDown)  //open claw when space bar pressed
 		{
 			spriteRenderer.sprite = openClaw;  //open claw
 			if (!openClawSound.isPlaying && !wasOpen) {  //if not playing squeak and transitioning from closed claw to open claw

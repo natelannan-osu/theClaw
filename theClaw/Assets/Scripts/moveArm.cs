@@ -7,6 +7,7 @@ public class moveArm : MonoBehaviour {
 	private AudioSource audioSource;  //chain sound moving arm
 	private float speed = .2f;
 
+
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource>();  //get audio source sound

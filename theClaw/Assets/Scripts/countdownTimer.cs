@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class countdownTimer : MonoBehaviour {
 	public Text displayTime;
 	public Text gameOver;
+	[HideInInspector]
+	public bool done;
 	private float timer;
 	private int min;
 	private float sec;
@@ -20,6 +22,7 @@ public class countdownTimer : MonoBehaviour {
 		sec = 0.0f;
 		gameOver.text = "";
 		updateTime ();
+		done = false;
 	}
 	
 	// Update is called once per frame
@@ -38,7 +41,7 @@ public class countdownTimer : MonoBehaviour {
 			sec = 0.0f;
 			updateTime ();
 			gameOver.text = "GAME OVER!";
-			Time.timeScale = 0;
+			done = true;
 		}
 	}
 
