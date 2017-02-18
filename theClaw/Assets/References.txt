@@ -19,3 +19,11 @@ Composer/Designer	website												License				Date Aquired
 General Sound Effects 
 Library	Sound Ideas 									 
 (these sfx must not be reused as they are part of an end user agreement from purchase)
+
+Fonts:
+
+Designer	        website												License				Date Aquired
+=================	========================================================					=======================		====================
+- dcoxy			http://www.1001freefonts.com/mr_sunshine.font							Personal Use			2/18/17
+- blambot fonts		http://www.1001freefonts.com/badaboom.font							Personal Use			2/18/17
+- Isurus Labs 		http://www.unity3d.com										Public Domain 			2/16/17

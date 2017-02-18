@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class dropRock : MonoBehaviour {
 	/*** This script controls the behavior of a rock object.  It causes it to follow the claw
@@ -77,22 +76,33 @@ public class dropRock : MonoBehaviour {
 					spriteRenderer.sprite = rockSprite3;
 					spriteRenderer.color = new Color (1f, 1f, 1f, 0f);
 				}
-				rendered = true;  //rendered
+				rendered = true;  //rendered 
 			}
-			if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxis(openClaw2.Startup.inputAxis) == openClaw2.Startup.triggerDown) {  //open claw and drop rock
+			#if UNITY_EDITOR 
+			if (Input.GetKeyDown (KeyCode.Space) || Input.GetAxis(ControllerMaps.Startup.inputAxis) == ControllerMaps.Startup.triggerDown)   //open claw and drop rock
+			#else
+			if(Input.GetKeyDown (KeyCode.Space) || Input.GetAxis("rock_win") == 1)   //build only
+			#endif
+			{
 				spriteRenderer.color = new Color (1f, 1f, 1f, 1f);
 				//transform.parent = null;
 				rigidBody.gravityScale = 1f;  //give it gravity
 				hasDropped = true;  //dropped, need to reload
 				reload = true; //claw needs to be reloaded
 				closed = false;  //claw is open used in late update
-			} 
-		} else {
+			}
+		}  else {
 			timeUntilDrop -= Time.deltaTime;  //rock released start timer for spawning new rock
 		}
-		if (Input.GetKeyUp (KeyCode.Space) || Input.GetAxis(openClaw2.Startup.inputAxis) == openClaw2.Startup.triggerUp) { 
+		#if UNITY_EDITOR
+		if (Input.GetKeyUp (KeyCode.Space) || Input.GetAxis(ControllerMaps.Startup.inputAxis) == ControllerMaps.Startup.triggerUp)  
+		#else
+		if (Input.GetKeyUp (KeyCode.Space) || Input.GetAxis("rock_win") <= 0)  //build only
+		#endif
+		{
 			closed=true;  //claw closed to be used with late update		
 		}
+
 	}
 
 	void LateUpdate (){

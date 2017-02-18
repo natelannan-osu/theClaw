@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class countdownTimer : MonoBehaviour {
 	public Text displayTime;
-	public Text gameOver;
 	[HideInInspector]
 	public bool done;
 	private float timer;
 	private int min;
+	private int endScene = 2;
 	private float sec;
 	private float blinkPeriod = .3f;  //period at which rock blinks before destroy
 	//.3 seconds
@@ -20,7 +21,6 @@ public class countdownTimer : MonoBehaviour {
 		timer = 120;
 		min = 2;
 		sec = 0.0f;
-		gameOver.text = "";
 		updateTime ();
 		done = false;
 	}
@@ -37,11 +37,7 @@ public class countdownTimer : MonoBehaviour {
 			}
 			updateTime ();
 		} else {
-			min = 0;
-			sec = 0.0f;
-			updateTime ();
-			gameOver.text = "GAME OVER!";
-			done = true;
+			SceneManager.LoadScene (endScene);
 		}
 	}
 

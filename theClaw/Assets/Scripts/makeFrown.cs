@@ -9,6 +9,8 @@ public class makeFrown : MonoBehaviour {
 	public Sprite frown;  //frown when hit by rock  
 	[HideInInspector]
 	public bool frowning;  //used by tail child in cat person
+	//[HideInInspector]
+	//public static int hitCount;
 	public Text Score;
 	public GameObject desert;
 
@@ -17,7 +19,6 @@ public class makeFrown : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;  //for switching mouth states
 	private AudioSource yelp;  //person sound when hit
 	private float rockYpos;
-	private static int hitCount;
 	private countdownTimer gameTime;
 	//private GameObject rockObject;
 	// Use this for initialization
@@ -27,7 +28,7 @@ public class makeFrown : MonoBehaviour {
 		if (spriteRenderer.sprite == null)  //default sprite is smile
 			spriteRenderer.sprite = smile;
 		yelp = GetComponent<AudioSource> ();  //specify yelp sound
-		hitCount = 0;
+		//hitCount = 0;
 		UpdateScore ();
 		gameTime = desert.GetComponent<countdownTimer>();
 	}
@@ -48,7 +49,7 @@ public class makeFrown : MonoBehaviour {
 			rockYpos = other.gameObject.transform.position.y;
 			if(!other.gameObject.GetComponent<dropRock> ().initialContact){
 				if (rockYpos > -3.2f  && !gameTime.done) {
-					hitCount++;
+					ApplicationModel.hitCount++;
 					UpdateScore ();
 					//Physics2D.IgnoreCollision (other.gameObject.GetComponent<Collider2D> (), GetComponent<Collider2D> ()); 
 					if (!frowning) {
@@ -62,6 +63,6 @@ public class makeFrown : MonoBehaviour {
 	}
 
 	void UpdateScore (){
-		Score.text = "Score: " + hitCount.ToString ();
+		Score.text = "Score: " + ApplicationModel.hitCount.ToString ();
 	}
 }
