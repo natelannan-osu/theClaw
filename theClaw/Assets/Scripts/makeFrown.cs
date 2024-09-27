@@ -47,6 +47,7 @@ public class makeFrown : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {  //collision
 		if (other.gameObject.tag == "rock") {  //rock hit person
 			rockYpos = other.gameObject.transform.position.y;
+			Debug.Log(other.gameObject.GetComponent<dropRock> ().initialContact);
 			if(!other.gameObject.GetComponent<dropRock> ().initialContact){
 				if (rockYpos > -3.2f  && !gameTime.done) {
 					ApplicationModel.hitCount++;

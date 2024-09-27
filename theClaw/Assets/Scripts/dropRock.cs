@@ -15,7 +15,7 @@ public class dropRock : MonoBehaviour {
 	public Sprite rockSprite3;
 	[HideInInspector]
 	public bool hasDropped;  //state of current rock
-	[HideInInspector]
+	//[HideInInspector]
 	public bool initialContact;  //first hit happend.  use to ignore later hits for scoring
 
 	private float waitForRock = .5f;  //time to wait before spawning new rock

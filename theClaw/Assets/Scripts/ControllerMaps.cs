@@ -16,8 +16,7 @@ public class ControllerMaps : MonoBehaviour {
 		public static string inputAxis;
 		static Startup() {
 			if (Application.platform == RuntimePlatform.WindowsEditor 
-				|| Application.platform == RuntimePlatform.WindowsPlayer
-				|| Application.platform == RuntimePlatform.WindowsWebPlayer) {
+				|| Application.platform == RuntimePlatform.WindowsPlayer) {
 				opSys = "Win";
 				triggerDown = 1;
 				triggerUp = 0;
@@ -25,9 +24,7 @@ public class ControllerMaps : MonoBehaviour {
 
 			}
 			else if (Application.platform == RuntimePlatform.OSXEditor
-				|| Application.platform == RuntimePlatform.OSXPlayer
-				|| Application.platform == RuntimePlatform.OSXWebPlayer
-				|| Application.platform == RuntimePlatform.OSXDashboardPlayer){
+				|| Application.platform == RuntimePlatform.OSXPlayer){
 				opSys = "OSX";
 				triggerDown = 1;
 				triggerUp = -1;

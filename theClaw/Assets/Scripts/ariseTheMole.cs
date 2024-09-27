@@ -10,7 +10,7 @@ public class ariseTheMole : MonoBehaviour {
 	private int moleIndex;
 	private float xPosition;
 	private float yStart;
-	private float riseSpeed = 1.0f;
+	private float riseSpeed = 0.1f;
 	private float stayTime = 2.0f;
 	private float countdown;
 	// Use this for initialization

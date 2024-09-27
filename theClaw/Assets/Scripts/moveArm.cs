@@ -5,7 +5,7 @@ using UnityEngine;
 public class moveArm : MonoBehaviour {
 	/*** This Script is to cause claw arm to move left and right on screen, stopping at screen edges ***/
 	private AudioSource audioSource;  //chain sound moving arm
-	private float speed = .2f;
+	private float speed = .025f;
 
 
 	// Use this for initialization
